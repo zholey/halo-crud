@@ -20,14 +20,14 @@ public interface IEntityService<T extends IEntity<K>, K> {
 	 * 
 	 * @param bean
 	 */
-	public boolean create(T bean) throws SrvException;
+	public boolean create(T bean) throws CRUDException;
 
 	/**
 	 * 保存（更新）实体
 	 * 
 	 * @param bean
 	 */
-	public boolean update(T bean) throws SrvException;
+	public boolean update(T bean) throws CRUDException;
 
 	/**
 	 * 根据主键查找实体
@@ -35,7 +35,7 @@ public interface IEntityService<T extends IEntity<K>, K> {
 	 * @param pkid 主键ID
 	 * @return
 	 */
-	public T find(K pkid) throws SrvException;
+	public T find(K pkid) throws CRUDException;
 
 	/**
 	 * 根据主键查找实体
@@ -43,14 +43,14 @@ public interface IEntityService<T extends IEntity<K>, K> {
 	 * @param pkids 主键ID
 	 * @return
 	 */
-	public List<T> findAll(List<K> pkids) throws SrvException;
+	public List<T> findAll(List<K> pkids) throws CRUDException;
 
 	/**
 	 * 获取全部实体
 	 * 
 	 * @return
 	 */
-	public List<T> list() throws SrvException;
+	public List<T> list() throws CRUDException;
 
 	/**
 	 * 根据条件查询
@@ -65,7 +65,7 @@ public interface IEntityService<T extends IEntity<K>, K> {
 	 * 
 	 * @param pkids 主键ID
 	 */
-	public boolean remove(List<K> pkids) throws SrvException;
+	public boolean remove(List<K> pkids) throws CRUDException;
 
 	/***************************************************/
 	/** static function ********************************/

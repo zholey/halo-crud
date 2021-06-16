@@ -12,7 +12,7 @@ import org.gridsofts.halo.bean.Condition;
 import org.gridsofts.halo.crud.IEntity;
 import org.gridsofts.halo.crud.IEntityService;
 import org.gridsofts.halo.crud.IGenericType;
-import org.gridsofts.halo.crud.SrvException;
+import org.gridsofts.halo.crud.CRUDException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,22 +51,22 @@ public abstract class AbstractCRUDService<T extends IEntity<K>, K> implements IE
 	}
 
 	@Override
-	public boolean create(T bean) throws SrvException {
+	public boolean create(T bean) throws CRUDException {
 		return superDAO.save(beanClass, bean) != null;
 	}
 
 	@Override
-	public boolean update(T bean) throws SrvException {
+	public boolean update(T bean) throws CRUDException {
 		return superDAO.update(bean) == 1;
 	}
 
 	@Override
-	public T find(K pkid) throws SrvException {
+	public T find(K pkid) throws CRUDException {
 		return superDAO.find(beanClass, pkid);
 	}
 
 	@Override
-	public List<T> findAll(List<K> pkids) throws SrvException {
+	public List<T> findAll(List<K> pkids) throws CRUDException {
 
 		if (pkids == null) {
 			return null;
@@ -78,12 +78,12 @@ public abstract class AbstractCRUDService<T extends IEntity<K>, K> implements IE
 	}
 
 	@Override
-	public List<T> list() throws SrvException {
+	public List<T> list() throws CRUDException {
 		return superDAO.list(beanClass);
 	}
 
 	@Override
-	public boolean remove(List<K> pkids) throws SrvException {
+	public boolean remove(List<K> pkids) throws CRUDException {
 
 		if (pkids != null) {
 			int result = 0;

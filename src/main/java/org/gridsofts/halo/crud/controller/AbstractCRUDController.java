@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import org.gridsofts.halo.crud.IEntity;
 import org.gridsofts.halo.crud.IEntityService;
 import org.gridsofts.halo.crud.IGenericType;
-import org.gridsofts.halo.crud.SrvException;
+import org.gridsofts.halo.crud.CRUDException;
 import org.gridsofts.halo.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +65,7 @@ public abstract class AbstractCRUDController<T extends IEntity<K>, K> implements
 
 		try {
 			return crudService.list();
-		} catch (SrvException e) {
+		} catch (CRUDException e) {
 			logger.error(e.getMessage(), e);
 		}
 
@@ -91,7 +91,7 @@ public abstract class AbstractCRUDController<T extends IEntity<K>, K> implements
 			if (ktype != null && !StringUtil.isNull(pkid)) {
 				return crudService.find(ktype.cast(ktype));
 			}
-		} catch (SrvException e) {
+		} catch (CRUDException e) {
 			logger.error(e.getMessage(), e);
 		}
 
@@ -117,7 +117,7 @@ public abstract class AbstractCRUDController<T extends IEntity<K>, K> implements
 			}
 
 			return crudService.create(bean) ? ("OK") : ("FAIL");
-		} catch (SrvException e) {
+		} catch (CRUDException e) {
 			logger.error(e.getMessage(), e);
 
 			return e.getMessage();
@@ -149,7 +149,7 @@ public abstract class AbstractCRUDController<T extends IEntity<K>, K> implements
 			}
 
 			return crudService.update(target) ? ("OK") : ("FAIL");
-		} catch (SrvException e) {
+		} catch (CRUDException e) {
 			logger.error(e.getMessage(), e);
 
 			return e.getMessage();
@@ -178,7 +178,7 @@ public abstract class AbstractCRUDController<T extends IEntity<K>, K> implements
 			}
 
 			return ("FAIL");
-		} catch (SrvException e) {
+		} catch (CRUDException e) {
 			logger.error(e.getMessage(), e);
 
 			return e.getMessage();

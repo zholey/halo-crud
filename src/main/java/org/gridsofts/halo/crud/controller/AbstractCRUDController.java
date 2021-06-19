@@ -147,8 +147,8 @@ public abstract class AbstractCRUDController<T extends IEntity<K>, K> implements
 			if (target == null) {
 				return ("bean not found");
 			}
-
-			return crudService.update(target) ? ("OK") : ("FAIL");
+			
+			return crudService.update(bean) ? ("OK") : ("FAIL");
 		} catch (CRUDException e) {
 			logger.error(e.getMessage(), e);
 
